@@ -1,0 +1,29 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-button/papper-button.html">
+<dom-module is='polymer-ejemplo'>
+  <template>
+    <style>
+      :host .ejemplo {
+        color: red;
+      }
+    </style>
+    <input type='text' id='primerNumero'></input>
+    <input type='text' id='segundoNumero'></input>
+    <paper-button id='suma' raised>Sumar</paper-button>
+    <div id='resultado'></div>
+  </template>
+  <script>
+    Polymer({
+      is: "polymer-ejemplo",
+      ready: function() {
+        var polymerEjemploElement = this;
+        this.$.suma.addEventListener('click', function () {
+          polymerEjemploElement.$.resultado.innerHTML = polymerEjemploElement.suma(parseInt(polymerEjemploElement.$.primerNumero.value), parseInt(polymerEjemploElement.$.segundoNumero.value));
+        });
+      },
+      suma: function (a, b) {
+        return a + b;
+      }
+    });
+  </script>
+</dom-module>
